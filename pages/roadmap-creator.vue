@@ -32,39 +32,21 @@
       </div>
     </div>
 
-    <div class="grid grid-cols-3">
-      <div class="col-span-1 col-start-2">
-        <div
-          class="flex flex-col items-center justify-between mt-5 bg-white py-3 px-3 rounded-lg"
-        >
-          <textarea
-            class="outline-0 w-full"
-            rows="5"
-            placeholder="Descrição do roadmap"
-          ></textarea>
-
-          <button
-            class="bg-indigo-600 shadow text-white px-2 py-2 mt-2 h-10 w-full rounded-xl"
-          >
-            Salvar
-          </button>
-        </div>
-      </div>
-    </div>
+    
 
     <div class="grid grid-cols-3">
-      <div class="col-span-1 col-start-2" v-if="optionSelected == 1">
+      <!-- <div class="col-span-1 col-start-2" v-if="optionSelected == 1">
         <div class="mt-5 flex flex-col rounded-lg items-center justify-center bg-white border border-dashed border-indigo-300 h-32 w-full" ref="dropZoneRef">
           <font-awesome-icon :icon="['fas', 'image']" class="fa-lg text-indigo-600"/>
           <h3 class="text-lg text-zinc-700">Arraste a imagem aqui</h3>
         </div>
-      </div>
+      </div> -->
 <!-- 
       <div class="col-span-1 col-start-2">
         <EditorContent :editor="editor" />
       </div> -->
 
-      <div class="col-span-1 col-start-2">
+      <!-- <div class="col-span-1 col-start-2">
         <div class="flex justify-start bg-white px-3 py-3 rounded-lg mt-5">
           <font-awesome-icon :icon="['fas', 'cloud-arrow-down']" class="px-1 py-1 bg-indigo-600 rounded-lg text-white h-7 w-5 mr-5" />
 
@@ -104,9 +86,10 @@
             :series="chartSeries"
           ></apexchart>
         </div>
-      </div>
+      </div> -->
 
-      <div class="col-span-1 col-start-2" ref="creatorMenuRef">
+
+      <!-- <div class="col-span-1 col-start-2" ref="creatorMenuRef">
         <div
           class="flex items-center justify-start mt-5 bg-white py-3 px-3 rounded-lg border border-dashed border-indigo-300"
         >
@@ -160,7 +143,7 @@
             <font-awesome-icon :icon="['fas', 'code']" />
           </button>
         </div>
-      </div>
+      </div> -->
     </div>
   </div>
 </template>

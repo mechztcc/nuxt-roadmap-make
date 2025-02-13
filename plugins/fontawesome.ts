@@ -13,12 +13,12 @@ import {
   faCloudArrowDown,
   faCode,
   faLink,
-  faPlay
+  faPlay,
+  faHeadphones
 } from "@fortawesome/free-solid-svg-icons";
 import { faGithub, faTwitter } from "@fortawesome/free-brands-svg-icons";
 
 export default defineNuxtPlugin((nuxtApp) => {
-  // Adiciona os ícones que deseja usar na biblioteca
   library.add(
     faUser,
     faLock,
@@ -33,9 +33,9 @@ export default defineNuxtPlugin((nuxtApp) => {
     faCloudArrowDown,
     faCode,
     faLink,
-    faPlay
+    faPlay,
+    faHeadphones
   );
 
-  // Registra o componente globalmente
   nuxtApp.vueApp.component("FontAwesomeIcon", FontAwesomeIcon);
 });

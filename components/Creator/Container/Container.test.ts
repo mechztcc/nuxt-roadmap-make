@@ -1,9 +1,9 @@
 import { mount } from '@vue/test-utils'
-import Input from './Input.vue'
+import Container from './Container.vue'
 
-describe('Input', () => {
+describe('Container', () => {
   it('renderiza corretamente', () => {
-    const wrapper = mount(Input)
+    const wrapper = mount(Container)
     expect(wrapper.exists()).toBe(true)
   })
 })
