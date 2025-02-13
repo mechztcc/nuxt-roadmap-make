@@ -12,7 +12,8 @@ import {
   faChartSimple,
   faCloudArrowDown,
   faCode,
-  faLink
+  faLink,
+  faPlay
 } from "@fortawesome/free-solid-svg-icons";
 import { faGithub, faTwitter } from "@fortawesome/free-brands-svg-icons";
 
@@ -31,7 +32,8 @@ export default defineNuxtPlugin((nuxtApp) => {
     faChartSimple,
     faCloudArrowDown,
     faCode,
-    faLink
+    faLink,
+    faPlay
   );
 
   // Registra o componente globalmente

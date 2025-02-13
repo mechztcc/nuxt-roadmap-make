@@ -94,6 +94,18 @@
         </div>
       </div>
 
+      <div class="col-span-1 col-start-2">
+        <div class="flex px-3 py-3 bg-white rounded-lg mt-5">
+          <apexchart
+            class="w-full"
+            type="bar"
+            height="400"
+            :options="chartOptions"
+            :series="chartSeries"
+          ></apexchart>
+        </div>
+      </div>
+
       <div class="col-span-1 col-start-2" ref="creatorMenuRef">
         <div
           class="flex items-center justify-start mt-5 bg-white py-3 px-3 rounded-lg border border-dashed border-indigo-300"
@@ -103,6 +115,12 @@
             class="bg-indigo-600 shadow text-white px-2 py-2 mt-2 h-10 w-10 rounded-xl mr-2"
           >
             <font-awesome-icon :icon="['fas', 'image']" />
+          </button>
+
+          <button
+            class="bg-indigo-600 shadow text-white px-2 py-2 mt-2 h-10 w-10 rounded-xl mr-2"
+          >
+          <font-awesome-icon :icon="['fas', 'play']" />
           </button>
 
           <button
@@ -148,12 +166,15 @@
 </template>
 
 <script lang="ts" setup>
+import VueApexCharts from 'vue3-apexcharts'
 import { useDropZone } from '@vueuse/core'
 import { useEditor, EditorContent } from '@tiptap/vue-3'
 import StarterKit from '@tiptap/starter-kit'
 import Paragraph from '@tiptap/extension-paragraph'
 import Text from '@tiptap/extension-text'
 import Highlight from '@tiptap/extension-highlight'
+
+
 
 const dropZoneRef = ref<HTMLDivElement>()
 const creatorMenuRef = ref<HTMLDivElement>()
@@ -173,6 +194,30 @@ const { isOverDropZone } = useDropZone(dropZoneRef, {
   onDrop,
   dataTypes: ['image/jpeg']
 })
+
+const chartOptions = ref({
+  chart: {
+    id: 'vuechart-example',
+    toolbar: {
+      show: true
+    }
+  },
+  xaxis: {
+    categories: ['Janeiro', 'Fevereiro', 'Março', 'Abril', 'Maio'],
+  },
+  yaxis: {
+    title: {
+      text: 'Vendas'
+    }
+  },
+})
+
+const chartSeries = ref([
+  {
+    name: 'Vendas',
+    data: [10, 20, 15, 30, 25]
+  }
+])
 
 function onSelectImageUpload() {
   const wrapper = document.createElement('div');
@@ -227,6 +272,10 @@ function onAddTable() {
   wrapper.appendChild(table);
 
   creatorMenuRef.value?.parentNode?.insertBefore(wrapper, creatorMenuRef.value);
+}
+
+function onAddCart() {
+
 }
 
 </script>
