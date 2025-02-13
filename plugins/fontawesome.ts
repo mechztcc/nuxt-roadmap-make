@@ -14,7 +14,11 @@ import {
   faCode,
   faLink,
   faPlay,
-  faHeadphones
+  faHeadphones,
+  faTrash,
+  faCircleCheck,
+  faCircle,
+  faChevronRight
 } from "@fortawesome/free-solid-svg-icons";
 import { faGithub, faTwitter } from "@fortawesome/free-brands-svg-icons";
 
@@ -34,7 +38,11 @@ export default defineNuxtPlugin((nuxtApp) => {
     faCode,
     faLink,
     faPlay,
-    faHeadphones
+    faHeadphones,
+    faTrash,
+    faCircleCheck,
+    faChevronRight,
+    faCircle
   );
 
   nuxtApp.vueApp.component("FontAwesomeIcon", FontAwesomeIcon);
