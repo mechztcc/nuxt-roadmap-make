@@ -8,4 +8,11 @@ export default defineNuxtConfig({
   vite: {
     plugins: [tailwindcss()],
   },
+  app: {
+    head: {
+      bodyAttrs: {
+        class: 'bg-zinc-100'
+      }
+    }
+  }
 });
