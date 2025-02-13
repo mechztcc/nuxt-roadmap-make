@@ -1,4 +1,6 @@
 <template>
-    <NuxtPage />
-    <DefaultModal />
+  <NuxtPage />
 </template>
+
+<script setup lang="ts">
+</script>
