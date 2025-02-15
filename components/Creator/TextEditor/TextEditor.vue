@@ -12,23 +12,34 @@
     </template>
     <template #body>
       <div class="flex flex-col">
-
         <div class="flex mb-5">
           <button class="px-3 py-2 rounded-lg bg-indigo-200 mr-2" v-for="(item, index) in textOptions" :key="index" @click="item.action">
             <font-awesome-icon :icon="item.icon" />
           </button>
 
-          <select class="px-3 py-2 rounded-lg bg-indigo-200 outline-none" @change="onChangeFontSize($event.target)">
-            <option value="10">h1</option>
-            <option value="12">h2</option>
-            <option value="15">h3</option>
-            <option value="18">h4</option>
-            <option value="20">h5</option>
-            <option value="24">h6</option>
-          </select>
-        </div>
+          <button class="px-3 py-2 rounded-lg bg-indigo-200 mr-2" @click="editor.chain().focus().toggleHeading({ level: 1 }).run()">
+            h1
+          </button>
 
-        <editor-content :editor="editor" />
+          <button class="px-3 py-2 rounded-lg bg-indigo-200 mr-2" @click="editor.chain().focus().toggleHeading({ level: 2 }).run()">
+            h2
+          </button>
+          <button class="px-3 py-2 rounded-lg bg-indigo-200 mr-2" @click="editor.chain().focus().toggleHeading({ level: 3 }).run()">
+            h3
+          </button>
+          <button class="px-3 py-2 rounded-lg bg-indigo-200 mr-2" @click="editor.chain().focus().toggleHeading({ level: 4 }).run()">
+            h4
+          </button>
+
+        </div>
+      </div>
+
+      <div class="flex flex-col editor-container">
+        <editor-content :editor="editor" :style="{ height: '300px', width: '1250px' }" :class="'bg-zinc-100 rounded-lg px-5 py-5'"/>
+      </div>
+
+      <div class="flex flex-col">
+        <DefaultPositionSelector @selected="onSelectPosition"/>
       </div>
     </template>
 
@@ -44,12 +55,28 @@
 
 <script setup lang="ts">
 import ListItem from '@tiptap/extension-list-item'
-import TextStyle from '@tiptap/extension-text-style'
+import TextStyle from '@tiptap/extension-text-style';
 import StarterKit from '@tiptap/starter-kit'
 import TextAlign from '@tiptap/extension-text-align'
 import Highlight from '@tiptap/extension-highlight'
 import { Editor, EditorContent } from '@tiptap/vue-3'
-import type { RefSymbol } from '@vue/reactivity'
+import { useRoadmapStore } from '~/stores/roadmap'
+
+const store = useRoadmapStore();
+const position = ref<{ start: number, size: number }>()
+
+onMounted(() => {
+  editor.value = new Editor({
+    extensions: [
+    StarterKit, 
+    ListItem, 
+    TextStyle, 
+    Highlight,
+    TextAlign,
+    ],
+    content: '<p>Edite este texto!</p>',
+  })
+})
 
 const textOptions = [
   { 
@@ -105,55 +132,47 @@ const textOptions = [
 
 ]
 
-
 const editor = ref()
-function onChangeFontSize(level: any) {
-  const value = level['value']
-  console.log(value);
-  
-  editor.value?.chain().focus().setMark('textStyle', { fontSize: value }).run()
-}
-
-onMounted(() => {
-  editor.value = new Editor({
-    extensions: [
-    StarterKit, 
-    ListItem, 
-    TextStyle, 
-    Highlight,
-    TextAlign.configure(
-      {
-       types: ['heading', 'paragraph'], 
-      }
-    ),
-    ],
-    content: '<p>Edite este texto!</p>',
-  })
-})
 
 function onSave() {
   const html = editor.value.getHTML()
 
   const content = {
     type: 'text',
+    position: {
+      start: position.value?.start,
+      size: position.value?.size 
+    },
     html
   }
+  store.content.push(content)
 }
 
 const showModal = ref<boolean>(false)
 function onClick(e: any) {
   showModal.value = !showModal.value
 }
+
+function onSelectPosition(e: any) {
+  position.value = e;
+}
 </script>
 
 <style scoped>
 
 .ProseMirror {
-  height: 300px;
+  outline: none !important;
 }
 
 .ProseMirror-focused {
-  outline: none;
-  height: 300px;
+  outline: none !important;
 }
+
+.editor-container {
+  overflow: auto;
+}
+
+p { outline: none !important }
+
+
 </style>
