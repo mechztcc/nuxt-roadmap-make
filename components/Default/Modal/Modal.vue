@@ -20,9 +20,8 @@
                 <slot name="body"/>
               </div>
               <!-- Modal footer -->
-              <div class="flex items-center justify-end p-4 md:p-5  ">
-                  <button data-modal-hide="default-modal" type="button" class="text-white cursor-pointer bg-indigo-600 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center ">Salvar</button>
-                  <button data-modal-hide="default-modal" type="button" class="py-2.5 px-5 ms-3 cursor-pointer text-sm font-medium text-gray-900 focus:outline-none bg-zinc-100 rounded-lg   focus:z-10 focus:ring-4">Cancelar</button>
+              <div class="items-center justify-end p-4 md:p-5 hidden">
+                  <slot name="footer" />
               </div>
           </div>
       </div>

@@ -14,47 +14,101 @@
     </div>
 
     <div class="flex flex-col">
-      <span class="mt-10 text-xl">Tamanho da imagem</span>
+      <span class="mt-10 text-xl">Posicionamento da imagem</span>
       <small class="text-zinc-600">Selecione o tamanho no qual a imagem deve ocupar em tela</small>
     </div>
 
-    <div class="flex justify-between mt-2">
-      <div class="flex flex-col rounded-lg cursor-pointer" @click="onHandleAlignType('half')">
-        <img src="https://www.figma.com/community/resource/eda6e333-6ad7-4c50-affb-2b9c75a99ef4/thumbnail" class="rounded-lg align" :class="alignType == 'half' ? 'border-4 border-indigo-600' : ''" alt="">
-
-        <div class="flex justify-between mt-2">
-          <span class="text-zinc-600">Ocupar metade do espaço</span>
-          <font-awesome-icon v-if="alignType == 'half'" :icon="['fas', 'circle-check']" class="text-indigo-600 fa-xl" />
-        </div>
+    <div class="grid grid-cols-6 gap-1">
+      <div class="col-span-1" v-for="(item, index) in [1,2,3,4,5,6]" :key="index">
+        <div class="flex rounded-lg h-20 w-full" :class="hasSelected(item) ? 'bg-indigo-600' : 'bg-indigo-100'"  @click="onSelectSize(item)"></div>
       </div>
+    </div>
 
+    <div class="flex flex-col">
+      <span class="mt-5 text-xl">Bordas</span>
+      <small class="text-zinc-600">Selecione qual tipo de borda você deseja</small>
+    </div>
 
-      <div class="flex flex-col rounded-lg cursor-pointer" @click="onHandleAlignType('complete')">
-        <img src="https://www.figma.com/community/resource/eda6e333-6ad7-4c50-affb-2b9c75a99ef4/thumbnail" class="rounded-lg align" :class="alignType == 'complete' ? 'border-4 border-indigo-600' : ''" alt="">
-        <div class="flex justify-between mt-2">
-          <span class="text-zinc-600">Ocupar todo espaço</span>
-          <font-awesome-icon v-if="alignType == 'complete'" :icon="['fas', 'circle-check']" class="text-indigo-600 fa-xl" />
-        </div>
-
+    <div class="grid grid-cols-6 gap-1">
+      <div class="col-span-1" v-for="(item, index) in borders" :key="index" @click="onSelectBorderType(item)">
+        <div :class="[`flex h-20 w-full cursor-pointer rounded-${item}`, selectedBorder == item ? 'bg-indigo-600' : 'bg-indigo-200']"></div>
       </div>
+    </div>
+
+    <div class="flex justify-end mt-10 mb-5">
+      <button @click="onSave()"  type="button" class="text-white cursor-pointer bg-indigo-600 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center ">Salvar</button>
+      <button type="button" class="py-2.5 px-5 ms-3 cursor-pointer text-sm font-medium text-gray-900 focus:outline-none bg-zinc-100 rounded-lg   focus:z-10 focus:ring-4">Cancelar</button>
     </div>
 </template>
 
 <script setup lang="ts">
 import { useDropZone } from '@vueuse/core'
+import { useRoadmapStore } from '~/stores/roadmap'
+import { ref, reactive } from 'vue' 
 
-const alignType = ref('half')
-function onHandleAlignType(type: 'half' | 'complete') {
-  alignType.value = type
+const store = useRoadmapStore();
+
+const props = defineProps<{
+  data: { title: string, dataTypes: string[] }
+}>()
+
+const size = ref<number[]>([])
+function onSelectSize(item: number) {
+  const index = size.value.indexOf(item);
+
+  if(size.value.includes(item)) {
+    size.value.splice(index)
+    onFillEmptyValues()
+    return
+  }
+
+  if(!size.value.includes(item)) {
+    if(size.value.length >= 2) { return }
+    size.value.push(item)
+    onFillEmptyValues()
+    return
+  }
+
 }
+
+function onFillEmptyValues() {
+  if(size.value.length < 2) { return }
+  const [first, second] = size.value.sort((a, b) => a - b);
+
+  for (let i = first + 1; i < second; i++) {
+    if (!size.value.includes(i)) {
+      size.value.push(i);
+    }
+  }
+
+  size.value.sort((a, b) => a - b);
+}
+
+function hasSelected(item: number) {
+  return size.value.includes(item)
+}
+
+const borders = ref<string[]>(['none', 'lg', '2xl', '4xl', 'full'])
+const selectedBorder = ref<string>()
+
+function onSelectBorderType(type: string) {
+  if(selectedBorder.value == type) {
+    selectedBorder.value = '';
+    return;
+  }
+
+  selectedBorder.value = type
+}
+
+const file = reactive<{ image: File | null}>({ image: null });
 
 const imageUrl = ref();
 const dropZoneRef = ref<HTMLDivElement>()
 function onDrop(files: File[] | null) {
   if(files?.length == 0) { return }
 
-  const file = files![0]
-  imageUrl.value = URL.createObjectURL(file);
+  file.image = files![0]
+  imageUrl.value = URL.createObjectURL(file.image);
 }
 
 const { isOverDropZone } = useDropZone(dropZoneRef, {
@@ -68,10 +122,21 @@ function onClearImage() {
   imageUrl.value = null;
 }
 
-const props = defineProps<{
-  data: { title: string, dataTypes: string[] }
-}>()
+function onSave() {
+  const content = {
+    type: 'img',
+    file: file.image,
+    fileSrc: file.image ? URL.createObjectURL(file.image) : null,
+    border: selectedBorder.value,
+    position: {
+      start: size.value[0],
+      size: size.value.length
+    }
+  }
 
+  console.log(store.content);
+  store.onPushNewContent(content)
+}
 </script>
 
 <style scoped>

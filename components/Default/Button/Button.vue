@@ -25,7 +25,7 @@ function onClick() {
 <style scoped>
 
 .animated {
-  transition: transform 0.3s ease-in-out, opacity 0.3s ease-in-out;
+  transition: 0.3s ease-in-out, opacity 0.3s ease-in-out;
 }
 
 .animated:hover {
