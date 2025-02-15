@@ -1,16 +1,17 @@
 
 <template>
     <div class="flex flex-col items-end" v-if="imageUrl">
-      <font-awesome-icon @click="onClearImage()" :icon="['fas', 'trash']" class="bg-red-400 h-10 w-7 rounded-lg text-white py-2 px-2 cursor-pointer"/>
-      <img class="uploaded" :src="imageUrl" alt="">
+      <font-awesome-icon @click="onClearImage()" :icon="['fas', 'trash']" class="bg-red-400 h-10 w-7 rounded-lg mb-3 text-white py-2 px-2 cursor-pointer"/>
+      <img class="uploaded rounded-lg" :src="imageUrl" alt="">
     </div>
   
-    <div v-if="!imageUrl" class="border border-dashed hover:border-4 text-zinc-600 border-indigo-200 py-10 px-10 flex flex-col items-center rounded-lg" ref="dropZoneRef">
+    <div v-if="!imageUrl" @click="inputFileRef?.click()" class="cursor-pointer border border-dashed hover:border-4 text-zinc-600 border-indigo-200 py-10 px-10 flex flex-col items-center rounded-lg" ref="dropZoneRef">
       <span class="text-lg">{{ props.data.title }}</span>
       <small>
         Formatos aceitos: 
         <u class="mx-1" v-for="(item, index) in props.data.dataTypes" :key="index">{{ item }} </u>
       </small>
+      <input class="hidden" type="file" ref="inputFileRef" @change="onDropSingleFile">
     </div>
 
     <div class="flex flex-col">
@@ -104,11 +105,24 @@ const file = reactive<{ image: File | null}>({ image: null });
 
 const imageUrl = ref();
 const dropZoneRef = ref<HTMLDivElement>()
+const inputFileRef = ref<HTMLInputElement>()
+
 function onDrop(files: File[] | null) {
   if(files?.length == 0) { return }
 
   file.image = files![0]
   imageUrl.value = URL.createObjectURL(file.image);
+}
+
+function onDropSingleFile(event: Event) {
+  const input = event.target as HTMLInputElement;
+  file.image  = input.files ? input.files[0] : null;
+  const acceptedFileTypes = props.data.dataTypes;
+
+  if (!file) { return }
+  if (!acceptedFileTypes.includes(file.image!.type)) { return } 
+
+  file.image ? imageUrl.value = URL.createObjectURL(file.image) : null;
 }
 
 const { isOverDropZone } = useDropZone(dropZoneRef, {
@@ -123,6 +137,8 @@ function onClearImage() {
 }
 
 function onSave() {
+  if(!file.image || size.value.length == 0) { return }
+
   const content = {
     type: 'img',
     file: file.image,
@@ -133,8 +149,6 @@ function onSave() {
       size: size.value.length
     }
   }
-
-  console.log(store.content);
   store.onPushNewContent(content)
 }
 </script>

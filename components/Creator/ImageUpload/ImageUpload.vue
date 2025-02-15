@@ -12,7 +12,7 @@
         <h3 class="text-xl">Adicionar Imagem</h3>
       </template>
       <template #body>
-        <DefaultDropImage :data="{ dataTypes: ['image/jpeg', 'image/jpg', 'image/webp'], title: 'Arraste e solte a imagem aqui' }"/>
+        <DefaultDropImage :data="{ dataTypes: ['image/jpeg', 'image/jpg', 'image/webp', 'image/png'], title: 'Selecionar imagem' }"/>
       </template>
     </DefaultModal>
   </div>
