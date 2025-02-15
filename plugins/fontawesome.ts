@@ -18,7 +18,15 @@ import {
   faTrash,
   faCircleCheck,
   faCircle,
-  faChevronRight
+  faChevronRight,
+  faPenNib,
+  faItalic,
+  faBold,
+  faAlignCenter,
+  faAlignJustify,
+  faAlignLeft,
+  faAlignRight,
+  faPaintBrush
 } from "@fortawesome/free-solid-svg-icons";
 import { faGithub, faTwitter } from "@fortawesome/free-brands-svg-icons";
 
@@ -42,7 +50,15 @@ export default defineNuxtPlugin((nuxtApp) => {
     faTrash,
     faCircleCheck,
     faChevronRight,
-    faCircle
+    faPenNib,
+    faCircle,
+    faItalic,
+    faBold,
+    faAlignCenter,
+    faAlignJustify,
+    faAlignLeft,
+    faAlignRight,
+    faPaintBrush
   );
 
   nuxtApp.vueApp.component("FontAwesomeIcon", FontAwesomeIcon);

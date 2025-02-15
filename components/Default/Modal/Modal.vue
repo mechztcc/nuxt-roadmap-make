@@ -20,7 +20,7 @@
                 <slot name="body"/>
               </div>
               <!-- Modal footer -->
-              <div class="items-center justify-end p-4 md:p-5 hidden">
+              <div class="items-center justify-end p-4 md:p-5">
                   <slot name="footer" />
               </div>
           </div>
