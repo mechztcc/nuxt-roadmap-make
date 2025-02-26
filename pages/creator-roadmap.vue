@@ -5,7 +5,7 @@
     </div>
   </div>
 
-  <div class="grid grid-cols-6 gap-5">
+  <div class="grid grid-cols-6 gap-5 mb-20">
     <div :class="['mt-5', `col-start-${item.position?.start} col-span-${item.position?.size}`]"  v-for="(item, index) in store.content">
       <img :class="[`w-full h-auto rounded-${item.border}`]" :src="item.fileSrc" alt="" :key="index" v-if="item.type == 'img'">
 
@@ -13,7 +13,12 @@
         <p class="w-full" v-html="item.html"></p>
       </div>
 
-      <video :src="item.videoSrc" v-if="item.type == 'video'"></video>
+      <div class="fle px-5 py-5 bg-white rounded-lg w-full" v-if="item.type == 'video'">
+        <video :src="item.videoSrc" controls v-if="!item.embed"></video>
+
+        <iframe width="100%" height="550px" v-if="item.embed" :src="item.videoSrc" frameborder="0" allowfullscreen referrerpolicy="strict-origin-when-cross-origin" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"></iframe>
+      </div>
+
     </div>
   </div>
 </template>

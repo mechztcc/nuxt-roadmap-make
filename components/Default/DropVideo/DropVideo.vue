@@ -22,7 +22,7 @@
     <h3>Adicione um video usando o link do youtube</h3>
 
     <div class="flex justify-center">
-      <input type="text" class="border rounded-lg py-3 px-3 w-full border-indigo-100 outline-indigo-200">
+      <input type="text" class="border rounded-lg py-3 px-3 w-full border-indigo-100 outline-indigo-200" v-model="url">
 
       <button class="px-3 py-2 ml-4 bg-indigo-600 rounded-lg text-white h-full">
         <font-awesome-icon :icon="['fas', 'thumbs-up']" />
@@ -54,7 +54,9 @@ import { useDropZone } from '@vueuse/core'
 
 const props = defineProps<{
   data: { title: string, dataTypes: string[] }
-}>()
+}>() 
+
+const url = ref<string>()
 
 const store = useRoadmapStore();
 const emits = defineEmits(['close'])
@@ -99,7 +101,8 @@ function onSave() {
   const content = {
     type: 'video',
     file: file.media,
-    videoSrc: file.media ? videoUrl : null,
+    videoSrc: file.media ? videoUrl : url.value,
+    embed: file.media ? false : true,
     position: position.value
   }
 
