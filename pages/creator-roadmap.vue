@@ -9,13 +9,19 @@
     <div :class="['mt-5', `col-start-${item.position?.start} col-span-${item.position?.size}`]"  v-for="(item, index) in store.content">
       <img :class="[`w-full h-auto rounded-${item.border}`]" :src="item.fileSrc" alt="" :key="index" v-if="item.type == 'img'">
 
-      <div class="flex px-5 py-5 bg-white rounded-lg w-full " v-if="item.type == 'text'">
+      <div class="flex px-5 py-5 bg-white rounded-lg w-full h-full" v-if="item.type == 'text'">
         <p class="w-full" v-html="item.html"></p>
       </div>
 
-      <div class="fle px-5 py-5 bg-white rounded-lg w-full" v-if="item.type == 'video'">
-        <video :src="item.videoSrc" controls v-if="!item.embed"></video>
+      <div class="flex px-5 py-5 bg-white rounded-lg w-full " v-if="item.type == 'audio'">
+        <audio controls class="w-full" v-if="item.fileSrc">
+          <source :src="item.fileSrc" type="audio/mp3">
+          Seu navegador não suporta o elemento de áudio.
+        </audio>
+      </div>
 
+      <div class="flex px-5 py-5 bg-white rounded-lg w-full" v-if="item.type == 'video'">
+        <video :src="item.videoSrc" controls v-if="!item.embed"></video>
         <iframe width="100%" height="550px" v-if="item.embed" :src="item.videoSrc" frameborder="0" allowfullscreen referrerpolicy="strict-origin-when-cross-origin" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"></iframe>
       </div>
 
