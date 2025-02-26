@@ -49,6 +49,8 @@ import { ref, reactive } from 'vue'
 
 const store = useRoadmapStore();
 
+const emits = defineEmits(['close'])
+
 const props = defineProps<{
   data: { title: string, dataTypes: string[] }
 }>()
@@ -150,6 +152,7 @@ function onSave() {
     }
   }
   store.onPushNewContent(content)
+  emits('close', true)
 }
 </script>
 

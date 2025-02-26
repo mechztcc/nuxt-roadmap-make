@@ -26,9 +26,11 @@ import {
   faAlignJustify,
   faAlignLeft,
   faAlignRight,
-  faPaintBrush
+  faPaintBrush,
+  faVideo,
+  faThumbsUp
 } from "@fortawesome/free-solid-svg-icons";
-import { faGithub, faTwitter } from "@fortawesome/free-brands-svg-icons";
+import { faGithub, faTwitter, faYoutube } from "@fortawesome/free-brands-svg-icons";
 
 export default defineNuxtPlugin((nuxtApp) => {
   library.add(
@@ -58,7 +60,10 @@ export default defineNuxtPlugin((nuxtApp) => {
     faAlignJustify,
     faAlignLeft,
     faAlignRight,
-    faPaintBrush
+    faPaintBrush,
+    faVideo,
+    faYoutube,
+    faThumbsUp
   );
 
   nuxtApp.vueApp.component("FontAwesomeIcon", FontAwesomeIcon);

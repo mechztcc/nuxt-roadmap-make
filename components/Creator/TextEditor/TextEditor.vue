@@ -146,6 +146,7 @@ function onSave() {
     html
   }
   store.content.push(content)
+  showModal.value = false;
 }
 
 const showModal = ref<boolean>(false)
@@ -174,5 +175,21 @@ function onSelectPosition(e: any) {
 
 p { outline: none !important }
 
+
+h1 {
+  font-size: 1.875rem !important;
+}
+
+h2 {
+  font-size: 1.125rem !important;
+}
+
+h3 {
+  font-size: 0.875rem !important;
+}
+
+h6 {
+  font-size: 0.875rem !important;
+}
 
 </style>
