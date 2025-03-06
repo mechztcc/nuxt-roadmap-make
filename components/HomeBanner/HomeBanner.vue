@@ -17,7 +17,7 @@
           </subtitle>
          </template>
    
-        <button class="text-xl flex w-fit mt-5 px-4 py-3 cursor-pointer justify-center rounded-full bg-zinc-800 shadow text-white hover:text-yellow-200">COMEÇAR AGORA</button>
+        <button class="text-xl flex w-fit mt-5 px-4 py-3 cursor-pointer justify-center rounded-full bg-zinc-800 shadow text-white hover:text-yellow-200"><b>COMEÇAR AGORA</b></button>
         </div>
        </div>
 

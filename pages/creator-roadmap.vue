@@ -7,6 +7,11 @@
 
   <div class="grid grid-cols-6 gap-5 mb-20">
     <div :class="['mt-5', `col-start-${item.position?.start} col-span-${item.position?.size}`]"  v-for="(item, index) in store.content">
+      <div class="flex my-2 justify-end">
+        <font-awesome-icon :icon="['fas', 'trash']" class="bg-red-400 h-10 w-7 rounded-lg mb-3 text-white py-2 px-2 cursor-pointer"/>
+        <font-awesome-icon :icon="['fas', 'pen-nib']" class="bg-yellow-400 h-10 w-7 mx-2 rounded-lg mb-3 text-white py-2 px-2 cursor-pointer"/>
+      </div>
+
       <img :class="[`w-full h-auto rounded-${item.border}`]" :src="item.fileSrc" alt="" :key="index" v-if="item.type == 'img'">
 
       <div 
