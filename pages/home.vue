@@ -5,7 +5,7 @@
 
 
 
-    <div class="grid grid-cols-3 gap-5 px-60 bg-zinc-900 mt-20 pt-10">
+    <div class="grid grid-cols-3 gap-5 px-10 md:px-60 bg-zinc-900 mt-20 pt-10">
       <div class="col-span-3 mb-10">
         <div class="flex flex-col">
           <h1 class="text-4xl text-center text-zinc-50">
@@ -39,7 +39,7 @@
     </div>
 
 
-    <div class="grid grid-cols-3 gap-5 px-60 bg-zinc-900 pt-30">
+    <div class="grid grid-cols-3 gap-5 px-10 md:px-60 bg-zinc-900 pt-30">
       <div class="col-span-3 mb-10">
         <div class="flex flex-col">
           <h1 class="text-4xl text-center text-zinc-50">
@@ -73,7 +73,7 @@
     </div>
 
     <div class="flex">
-      <img src="~/assets/wave.svg" alt="">
+      <img src="~/assets/wave.svg" fill="#1b1718" alt="" style="margin-top: -1px;">
     </div>
     <HomeFooter />
   </div>
