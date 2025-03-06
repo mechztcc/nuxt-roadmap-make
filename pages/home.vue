@@ -3,10 +3,12 @@
     <HomeHeader />
     <HomeBanner />
 
-    <div class="grid grid-cols-3 gap-5 mx-60 mt-20">
+
+
+    <div class="grid grid-cols-3 gap-5 px-60 bg-zinc-900 mt-20 pt-10">
       <div class="col-span-3 mb-10">
         <div class="flex flex-col">
-          <h1 class="text-4xl text-center">
+          <h1 class="text-4xl text-center text-zinc-50">
             Para quem consome os guias
           </h1>
         </div>
@@ -37,10 +39,10 @@
     </div>
 
 
-    <div class="grid grid-cols-3 gap-5 mx-60 mt-30">
+    <div class="grid grid-cols-3 gap-5 px-60 bg-zinc-900 pt-30">
       <div class="col-span-3 mb-10">
         <div class="flex flex-col">
-          <h1 class="text-4xl text-center">
+          <h1 class="text-4xl text-center text-zinc-50">
             Para quem cria os guias
           </h1>
         </div>
@@ -69,8 +71,11 @@
         </HomeAdvantagesCards>
       </div>
     </div>
+
+    <div class="flex">
+      <img src="~/assets/wave.svg" alt="">
+    </div>
     <HomeFooter />
-     8
   </div>
 </template>
 
