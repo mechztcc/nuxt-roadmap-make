@@ -1,7 +1,7 @@
 <template>
   <button
     @click="showModal = !showModal"
-    class="bg-indigo-600 shadow text-white px-2 py-2 mt-2 h-10 w-10 rounded-xl mr-2 cursor-pointer"
+    class="bg-zinc-900 shadow text-white px-2 py-2 mt-2 h-10 w-10 rounded-xl mr-2 cursor-pointer"
   >
     <font-awesome-icon :icon="data.icon" class="icon" />
   </button>

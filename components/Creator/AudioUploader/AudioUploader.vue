@@ -13,10 +13,10 @@
       </template>
 
       <template #body>
-        <div class="flex flex-col items-end">
+        <div class="flex flex-col items-end"  v-if="audioUrl">
         <font-awesome-icon @click="onClearAudio()" :icon="['fas', 'trash']" class="bg-red-400 h-10 w-7 rounded-lg mb-3 text-white py-2 px-2 cursor-pointer"/>
 
-          <audio controls class="w-full" v-if="audioUrl">
+          <audio controls class="w-full">
             <source :src="audioUrl" type="audio/mp3">
             Seu navegador não suporta o elemento de áudio.
           </audio>
@@ -35,7 +35,7 @@
 
       <template #footer>
         <div class="flex justify-end">
-          <button @click="onSave()"  type="button" class="text-white cursor-pointer bg-indigo-600 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center ">Salvar</button>
+          <button @click="onSave()"  type="button" class="text-white cursor-pointer bg-zinc-900 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center ">Salvar</button>
           <button type="button" class="py-2.5 px-5 ms-3 cursor-pointer text-sm font-medium text-gray-900 focus:outline-none bg-zinc-100 rounded-lg   focus:z-10 focus:ring-4">Cancelar</button>
         </div>
       </template>

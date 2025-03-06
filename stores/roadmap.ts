@@ -5,8 +5,8 @@ export const useRoadmapStore = defineStore('roadmapStore', {
     content: [] as any[]
    }),
   actions: {
-    onPushNewContent(content: any) {
-      this.content.push(content)
+    onPushNewContent(c: any) {
+      this.content.push(c)
     }
   }
 })

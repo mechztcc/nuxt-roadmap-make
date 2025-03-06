@@ -1,13 +1,13 @@
 
 <template>
   <div class="flex flex-col">
-    <span class="mt-10 text-xl">Posicionamento do texto</span>
-    <small class="text-zinc-600">Selecione o tamanho no qual o texto deve ocupar em tela</small>
+    <span class="mt-10 text-xl">Posicionamento do elemento</span>
+    <small class="text-zinc-600">Selecione o tamanho no qual o elemento deve ocupar em tela</small>
   </div>
 
   <div class="grid grid-cols-6 gap-1">
     <div class="col-span-1" v-for="(item, index) in [1,2,3,4,5,6]" :key="index">
-      <div class="flex rounded-lg h-20 w-full" :class="hasSelected(item) ? 'bg-indigo-600' : 'bg-indigo-100'"  @click="onSelectSize(item)"></div>
+      <div class="flex rounded-lg h-20 w-full" :class="hasSelected(item) ? 'bg-zinc-900' : 'bg-indigo-100'"  @click="onSelectSize(item)"></div>
     </div>
   </div>
 </template>

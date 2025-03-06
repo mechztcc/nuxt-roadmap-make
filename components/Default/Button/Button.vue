@@ -2,18 +2,19 @@
 <template>
   <button
     @click="onClick"
-    :class="animated ? 'animated' : ''"
-    class="bg-indigo-600 shadow text-white px-2 py-2 mt-2 h-10 w-10 rounded-xl mr-2 cursor-pointer"
+    class="bg-zinc-800 shadow text-white hover:text-yellow-200 border-zinc-900 border-2 px-2 py-2 h-10 w-10 rounded-3xl mr-2 cursor-pointer hover:rounded-full"
   >
   <div class="icon">
     <slot name="append" />
   </div>
+
+  <slot name="prepend"></slot>
   </button>
 </template>
 
 <script setup lang="ts">
 const props = defineProps<{
-  animated: boolean
+  animated?: boolean
 }>()
 
 const emits = defineEmits(['click']);
@@ -29,15 +30,13 @@ function onClick() {
 }
 
 .animated:hover {
-  transform: rotate(45deg);
   opacity: 0.9;
-  border: 3px solid oklch(0.511 0.262 276.966);
+  border: 2px solid oklch(0.274 0.006 286.033);
   background-color: white;
 }
 
 .animated:hover .icon{
-  transform: rotate(-45deg);
   opacity: 0.9;
-  color: oklch(0.511 0.262 276.966);
+  color: oklch(0.274 0.006 286.033);
 }
 </style>

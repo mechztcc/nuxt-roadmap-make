@@ -12,7 +12,7 @@ export default defineNuxtConfig({
   app: {
     head: {
       bodyAttrs: {
-        class: 'bg-zinc-100'
+        class: 'bg-zinc-50'
       }
     }
   }

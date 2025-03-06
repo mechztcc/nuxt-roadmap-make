@@ -39,13 +39,17 @@
       </div>
 
       <div class="flex flex-col">
+        <DefaultCustomOptions @change="onChangeBg"/>
+      </div>
+
+      <div class="flex flex-col">
         <DefaultPositionSelector @selected="onSelectPosition"/>
       </div>
     </template>
 
     <template #footer>
       <div class="flex justify-end">
-        <button @click="onSave()"  type="button" class="text-white cursor-pointer bg-indigo-600 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center ">Salvar</button>
+        <button @click="onSave()"  type="button" class="text-white cursor-pointer bg-zinc-900 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center ">Salvar</button>
         <button type="button" class="py-2.5 px-5 ms-3 cursor-pointer text-sm font-medium text-gray-900 focus:outline-none bg-zinc-100 rounded-lg   focus:z-10 focus:ring-4">Cancelar</button>
       </div>
     </template>
@@ -64,6 +68,7 @@ import { useRoadmapStore } from '~/stores/roadmap'
 
 const store = useRoadmapStore();
 const position = ref<{ start: number, size: number }>()
+const removeBg = ref<boolean>(false)
 
 onMounted(() => {
   editor.value = new Editor({
@@ -143,9 +148,12 @@ function onSave() {
       start: position.value?.start,
       size: position.value?.size 
     },
+    removeBg: removeBg.value,
     html
   }
   store.content.push(content)
+  console.log(store.content);
+  
   showModal.value = false;
 }
 
@@ -156,6 +164,10 @@ function onClick(e: any) {
 
 function onSelectPosition(e: any) {
   position.value = e;
+}
+
+function onChangeBg(e: boolean) {
+  removeBg.value = e;
 }
 </script>
 

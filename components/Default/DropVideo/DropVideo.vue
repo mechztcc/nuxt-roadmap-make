@@ -24,7 +24,7 @@
     <div class="flex justify-center">
       <input type="text" class="border rounded-lg py-3 px-3 w-full border-indigo-100 outline-indigo-200" v-model="url">
 
-      <button class="px-3 py-2 ml-4 bg-indigo-600 rounded-lg text-white h-full">
+      <button class="px-3 py-2 ml-4 bg-zinc-900 rounded-lg text-white h-full">
         <font-awesome-icon :icon="['fas', 'thumbs-up']" />
       </button>
     </div>
@@ -43,7 +43,7 @@
   <DefaultPositionSelector @selected="onSelectPosition"/>
 
   <div class="flex justify-end mt-10">
-    <button @click="onSave()"  type="button" class="text-white cursor-pointer bg-indigo-600 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center ">Salvar</button>
+    <button @click="onSave()"  type="button" class="text-white cursor-pointer bg-zinc-900 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center ">Salvar</button>
     <button type="button" class="py-2.5 px-5 ms-3 cursor-pointer text-sm font-medium text-gray-900 focus:outline-none bg-zinc-100 rounded-lg   focus:z-10 focus:ring-4">Cancelar</button>
   </div>
 

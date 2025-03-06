@@ -21,7 +21,7 @@
 
     <div class="grid grid-cols-6 gap-1">
       <div class="col-span-1" v-for="(item, index) in [1,2,3,4,5,6]" :key="index">
-        <div class="flex rounded-lg h-20 w-full" :class="hasSelected(item) ? 'bg-indigo-600' : 'bg-indigo-100'"  @click="onSelectSize(item)"></div>
+        <div class="flex rounded-lg h-20 w-full" :class="hasSelected(item) ? 'bg-zinc-900' : 'bg-indigo-100'"  @click="onSelectSize(item)"></div>
       </div>
     </div>
 
@@ -32,12 +32,12 @@
 
     <div class="grid grid-cols-6 gap-1">
       <div class="col-span-1" v-for="(item, index) in borders" :key="index" @click="onSelectBorderType(item)">
-        <div :class="[`flex h-20 w-full cursor-pointer rounded-${item}`, selectedBorder == item ? 'bg-indigo-600' : 'bg-indigo-200']"></div>
+        <div :class="[`flex h-20 w-full cursor-pointer rounded-${item}`, selectedBorder == item ? 'bg-zinc-900' : 'bg-indigo-200']"></div>
       </div>
     </div>
 
     <div class="flex justify-end mt-10 mb-5">
-      <button @click="onSave()"  type="button" class="text-white cursor-pointer bg-indigo-600 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center ">Salvar</button>
+      <button @click="onSave()"  type="button" class="text-white cursor-pointer bg-zinc-900 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center ">Salvar</button>
       <button type="button" class="py-2.5 px-5 ms-3 cursor-pointer text-sm font-medium text-gray-900 focus:outline-none bg-zinc-100 rounded-lg   focus:z-10 focus:ring-4">Cancelar</button>
     </div>
 </template>

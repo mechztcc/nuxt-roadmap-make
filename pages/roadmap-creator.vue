@@ -6,7 +6,7 @@
         alt=""
       />
       <button
-        class="px-3 py-2 rounded-md bg-indigo-600 text-white absolute top-1/2"
+        class="px-3 py-2 rounded-md bg-zinc-900 text-white absolute top-1/2"
       >
         Alterar capa
       </button>
@@ -24,7 +24,7 @@
           />
 
           <button
-            class="bg-indigo-600 shadow text-white px-2 py-2 h-10 w-10 rounded-xl"
+            class="bg-zinc-900 shadow text-white px-2 py-2 h-10 w-10 rounded-xl"
           >
             <font-awesome-icon :icon="['fas', 'plus']" />
           </button>
@@ -48,7 +48,7 @@
 
       <!-- <div class="col-span-1 col-start-2">
         <div class="flex justify-start bg-white px-3 py-3 rounded-lg mt-5">
-          <font-awesome-icon :icon="['fas', 'cloud-arrow-down']" class="px-1 py-1 bg-indigo-600 rounded-lg text-white h-7 w-5 mr-5" />
+          <font-awesome-icon :icon="['fas', 'cloud-arrow-down']" class="px-1 py-1 bg-zinc-900 rounded-lg text-white h-7 w-5 mr-5" />
 
           <div class="flex flex-col w-full">
             <span class="text-lg">Arquivo.txt</span>
@@ -57,7 +57,7 @@
 
 
             <div class="flex justify-end">
-              <button class="bg-indigo-600 shadow text-white px-2 py-2 rounded-xl mr-2">
+              <button class="bg-zinc-900 shadow text-white px-2 py-2 rounded-xl mr-2">
                 Baixar
               </button>
             </div>
@@ -67,7 +67,7 @@
 
       <div class="col-span-1 col-start-2">
         <div class="flex bg-white px-3 py-3 rounded-lg mt-5">
-          <font-awesome-icon :icon="['fas', 'link']" class="px-1 py-1 bg-indigo-600 rounded-lg text-white h-7 w-5 mr-5"/>
+          <font-awesome-icon :icon="['fas', 'link']" class="px-1 py-1 bg-zinc-900 rounded-lg text-white h-7 w-5 mr-5"/>
 
           <div class="flex flex-col">
             <span class="text-lg"><u>https://www.4shared.com/2Ud21i</u></span>
@@ -95,50 +95,50 @@
         >
           <button
             @click="onSelectImageUpload()"
-            class="bg-indigo-600 shadow text-white px-2 py-2 mt-2 h-10 w-10 rounded-xl mr-2"
+            class="bg-zinc-900 shadow text-white px-2 py-2 mt-2 h-10 w-10 rounded-xl mr-2"
           >
             <font-awesome-icon :icon="['fas', 'image']" />
           </button>
 
           <button
-            class="bg-indigo-600 shadow text-white px-2 py-2 mt-2 h-10 w-10 rounded-xl mr-2"
+            class="bg-zinc-900 shadow text-white px-2 py-2 mt-2 h-10 w-10 rounded-xl mr-2"
           >
           <font-awesome-icon :icon="['fas', 'play']" />
           </button>
 
           <button
             @click="onAddTable()"
-            class="bg-indigo-600 shadow text-white px-2 py-2 mt-2 h-10 w-10 rounded-xl mr-2"
+            class="bg-zinc-900 shadow text-white px-2 py-2 mt-2 h-10 w-10 rounded-xl mr-2"
           >
             <font-awesome-icon :icon="['fas', 'table-list']" />
           </button>
 
           <button
-            class="bg-indigo-600 shadow text-white px-2 py-2 mt-2 h-10 w-10 rounded-xl mr-2"
+            class="bg-zinc-900 shadow text-white px-2 py-2 mt-2 h-10 w-10 rounded-xl mr-2"
           >
             <font-awesome-icon :icon="['fas', 't']" />
           </button>
 
           <button
-            class="bg-indigo-600 shadow text-white px-2 py-2 mt-2 h-10 w-10 rounded-xl mr-2"
+            class="bg-zinc-900 shadow text-white px-2 py-2 mt-2 h-10 w-10 rounded-xl mr-2"
           >
             <font-awesome-icon :icon="['fas', 'map-location-dot']" />
           </button>
 
           <button
-            class="bg-indigo-600 shadow text-white px-2 py-2 mt-2 h-10 w-10 rounded-xl mr-2"
+            class="bg-zinc-900 shadow text-white px-2 py-2 mt-2 h-10 w-10 rounded-xl mr-2"
           >
             <font-awesome-icon :icon="['fas', 'chart-simple']" />
           </button>
 
           <button
-            class="bg-indigo-600 shadow text-white px-2 py-2 mt-2 h-10 w-10 rounded-xl mr-2"
+            class="bg-zinc-900 shadow text-white px-2 py-2 mt-2 h-10 w-10 rounded-xl mr-2"
           >
             <font-awesome-icon :icon="['fas', 'cloud-arrow-down']" />
           </button>
 
           <button
-            class="bg-indigo-600 shadow text-white px-2 py-2 mt-2 h-10 w-10 rounded-xl mr-2"
+            class="bg-zinc-900 shadow text-white px-2 py-2 mt-2 h-10 w-10 rounded-xl mr-2"
           >
             <font-awesome-icon :icon="['fas', 'code']" />
           </button>
